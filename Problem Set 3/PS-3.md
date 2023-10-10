@@ -103,26 +103,84 @@ Since $log_2(2) = 1$
 $$
 T(log(m)) = 2T(log(m)-log(2))+1 \\
  \Rarr 2T(log(m/2)) + 1 \\
- \text{let T(log(m)) be a function f(m)}\\
-f(m) = 2(f(m)/2) + 1
+ \text{we can substitute T(log(m)) to be a function f(m)}\\
+f(m) = 2(f(m/2)) + 1
 $$
-Applying masters theorem on the last equation we have a = 2, b = 2.
+Applying masters theorem on the last equation we have a = 2, b = 1.
 
-According to Case 1 of master theorem, $f(n) = O(n^{log(2)}) = O(n)$
+According to Case 1 of master theorem, $f(m) = O(m^{log(2)}) = O(m)$
 
-Hence $T(n) = \Theta(n)$
+Now, we assumed  $n = log(m)$ initially. Hence $m = n^2$
+
+$\Rarr T(n) = \Theta(n^2)$
+
+We can further prove that $T(n) = \Theta(n^2)$ using the argument in part (c), where I use iterative substitution to arrive at the answer.
+
+Credits to **Hakshay Sundar** for pointing me in the right direction with this question when I was stuck on using a transformation function incorrectly. 
+
+## Question 2
+
+## Let x, y, z be real numbers for which $T(1) = 1$ and $T(n) = xT(n/y) + n^z$ . 
+
+## (a) If $z < logy(x)$, prove that $T(n) = Θ(n^{log_y(x)})$.
+
+## (b) If $z = log_y(x)$, prove that $T(n) = Θ(n^{log_y(x)} log_y n)$.
+
+## If $z > log_y(x)$, prove that $T(n) = Θ(n^z )$.
 
 
 
+Let's try reducing $xT(n/y)$ through a recursion tree.
 
+![WhatsApp Image 2023-10-06 at 19.26.55](C:\Users\harry\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\814A9C18F5ABFF398787C9CFCBF3D80C\WhatsApp Image 2023-10-06 at 19.26.55.jpg)
 
+For the first level, there are $x$ number of nodes and the sum of the nodes is simply the work done, which is $x(n/y)^z$.
 
+For the second level, there are $x$ nodes of each of the previous $x$ nodes on the first level, hence the total is $x^2(n/y^2)^z$. Similarly at the $k^{th}$ level, we have done work $x^k(n/y^k)^z$.
 
+The grand sum will be $x(n/y)^z + x^2(n/y^2)z + ...+x^k(n/y^k)^z$. Since the tree branches out exponentially, we know that the total number of levels will be $k = log_yn$ where all the elements are split to 1.
 
+This sum can be represented as : $\sum_{k = 0}^{log_yn}n^z(x/y^z)^k$.
 
+**(a) Here, $z > log_yx$, we get through geometric progression,** 
+$$
+n^z(a/b^z)^{log_yn}
+$$
+This can be simplified to
+$$
+n^z(a^{log_yn}/b^{z\log_yn})\\
+\Rarr n^z(n^{log_ya}/n^{z})\\
+\Rarr n^{log_ya}
+$$
+using logarithmic identities.
 
+Hence $T(n) = \Theta(n^{log_ya})$ for (a)
 
+**(b) Here, $z = log_yx$, hence our summation becomes:**
+$$
+\sum_{k = 0}^{log_yn}n^z(x/y^z)^k
+\Rarr\sum_{k = 0}^{log_yn}n^{log_yx}(x/y^{log_yx})^k\\
+=\sum_{k = 0}^{log_yn}n^{log_yx}(1)^k
+=(1+log_yn)n^{log_yx}
+=O(log_yn)n^{log_yx}
+$$
+Hence Proved that $T(n) = \Theta(log_yn)n^{log_yx}$
 
+**(c) Here, $z< log_yx$, hence through geometric progression our summation assumes the form:**
+$$
+\sum_{k = 0}^{log_yn}n^z(x/y^z)^k =(n^z)
+$$
+Hence $T(n) = \Theta(n^z)$
 
+## (d) $T(n) = 7T(n/2) + n^2 $
 
+Strassen's algorithm takes on the form : $T(n) = 7T(n/2) + n^2 $
+
+Here, $x = 7$ and $y = 2$.
+
+Now, $log_2(7) = 2.807..$
+
+Hence $z = 2 < log_yx = log_2(7)$
+
+Hence case (c) applies, so the algorithm is of $T(n) = \Theta(n^2)$ and runs in $O(n^2) $ time.
 
