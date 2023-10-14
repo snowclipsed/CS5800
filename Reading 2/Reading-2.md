@@ -3,7 +3,6 @@
 ## Problem 1) Provide a summary of your understanding of recurrence ( what recurrence is, how to solve recurrences and give an example).
 
 
-
 Recurrence implies repetition. In algorithms, recurrence is the process of repeatedly applying a function to break down a problem into smaller sub-problems till a *base case* is reached. A base case is the point where the recurrence terminates ; i.e.; the recurrence function does not call itself anymore. It *usually* is represented by a case that is elementary in nature and cannot be further broken down into sub-cases.
 
 A recurrence equation is a mathematical representation of a recurrence condition. This equation defines a function which is defined in terms of their previous values. Recurrence equations are widely used during algorithmic analysis of recurrence based algorithms, specially divide and conquer algorithms.
@@ -70,4 +69,6 @@ Hence case 2 of the master theorem applies and $T(n) = \Theta(nlogn)$.
 
 ## Problem 3) Provide a quick review of Selection, Insertion, Merge sort and quick sort and provide a summary of the O, Omega and Theta asymptotic running times. These could come from your reading , you do not need to compute them.
 
-$\Theta$ notation describes a tight bound on a function's asymptotic behavior. It indicates that a function grows exactly at a particular rate, which is determined by the highest-order term.
+The O-notation indicates an upper bound on a function's asymptotic behavior. Implying that a function's growth rate is constrained and cannot surpass a certain level. The rate is determined by its highest-order term.
+The Ω notation represents a lower bound on the asymptotic behavior of a function. In other words, the notation indicates that a function grows at least as fast as a specific rate. The rate is based on the highest-order term.
+The θ notation describes a tight bound on a function's asymptotic behavior. It indicates that a function grows exactly at a particular rate, which is determined by the highest-order term.
