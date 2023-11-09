@@ -208,27 +208,21 @@ draw the tree as following:
     \node[anchor=west] at (8,-6) {$2^(\frac{n}{2^k})$};
   \end{tikzpicture}
   \end{figure}
-  
 
 Now, we can see that at level k, we reach our base case.
 
 Hence :
 
 \[\frac{n}{2^k} = 1 \\ 
-
 \Rarr n = 2^k \\
-
 k = log_2n\\\]
 
 \(T_c = I_c+L_c\) Where \(I_c\) = branch complexity and \(L_c\) = leaf
 node complexity.
 
 \[I_c = \sum_{i=0}^{k = log(n)-1} 2^i(\frac{n}{2^i}) = n(logn-1) = nlogn - n \\
-
 L_c = 2^k(\frac{n}{2^k}) = n\\
-
 T_c = nlogn - n +n = nlogn\\\\
-
 T(n) = O(nlogn)\]
 
 \subsubsection{2. Master Theorem}\label{2-master-theorem}
@@ -261,5 +255,17 @@ Merge sort and quick sort and provide a summary of the O, Omega and
 Theta asymptotic running times. These could come from your reading , you
 do not need to compute
 them.}\label{problem-3-provide-a-quick-review-of-selection-insertion-merge-sort-and-quick-sort-and-provide-a-summary-of-the-o-omega-and-theta-asymptotic-running-times-these-could-come-from-your-reading--you-do-not-need-to-compute-them}
+
+The O-notation indicates an upper bound on a function\textquotesingle s
+asymptotic behavior. Implying that a function\textquotesingle s growth
+rate is constrained and cannot surpass a certain level. The rate is
+determined by its highest-order term.\\
+The Ω notation represents a lower bound on the asymptotic behavior of a
+function. In other words, the notation indicates that a function grows
+at least as fast as a specific rate. The rate is based on the
+highest-order term.\\
+The θ notation describes a tight bound on a function\textquotesingle s
+asymptotic behavior. It indicates that a function grows exactly at a
+particular rate, which is determined by the highest-order term.
 
 \end{document}
